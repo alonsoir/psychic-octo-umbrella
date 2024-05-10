@@ -7,6 +7,5 @@ copy .env file to this repo
 ```
 shell
     poetry shell
-    poetry update
     poetry run python main.py
 ```

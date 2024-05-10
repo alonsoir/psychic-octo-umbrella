@@ -1,8 +1,12 @@
 import os
 import speech_recognition as sr
 import subprocess
-import openai
+from openai import OpenAI
 from dotenv import load_dotenv
+
+load_dotenv()
+client = OpenAI()
+
 
 # Inicialización del reconocedor de voz
 recognizer = sr.Recognizer()
@@ -34,15 +38,13 @@ def query_gpt(prompt, model="gpt-3.5-turbo", max_tokens=100):
     """Envía una pregunta al LLM y recibe la respuesta."""
     print(f"prompt: {prompt}")
     try:
-        response = openai.ChatCompletion.create(
-            model=model,
-            messages=[
-                {"role": "system", "content": "You are a helpful assistant."},
-                {"role": "user", "content": prompt}
-            ],
-            max_tokens=max_tokens
-        )
-        answer = response['choices'][0]['message']['content'].strip()
+        response = client.chat.completions.create(model=model,
+        messages=[
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": prompt}
+        ],
+        max_tokens=max_tokens)
+        answer = response.choices[0].message.content.strip()
         print(f"GPT Response: {answer}")
         return answer
     except Exception as e:
@@ -51,8 +53,6 @@ def query_gpt(prompt, model="gpt-3.5-turbo", max_tokens=100):
 
 
 def main():
-    load_dotenv()
-    openai.api_key = os.getenv("OPENAI_API_KEY")
 
     print("Interactive Voice Chat with GPT Model")
     while True:
