@@ -16,6 +16,8 @@ transformers = "^4.40.2"
 black = "^24.4.2"
 pyobjc = "^10.2"
 pyobjc-framework-avfoundation = "^10.2"
+scrapegraphai = "^0.10.0"
+playwright = "^1.43.0"
 
 
 [build-system]

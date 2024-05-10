@@ -31,19 +31,21 @@ def listen_to_speech():
 
 def speak(text):
     """Función para convertir texto a voz usando el comando `say` de macOS."""
-    subprocess.run(['say', text])
+    subprocess.run(["say", text])
 
 
 def query_gpt(prompt, model="gpt-3.5-turbo", max_tokens=100):
     """Envía una pregunta al LLM y recibe la respuesta."""
     print(f"prompt: {prompt}")
     try:
-        response = client.chat.completions.create(model=model,
-        messages=[
-            {"role": "system", "content": "You are a helpful assistant."},
-            {"role": "user", "content": prompt}
-        ],
-        max_tokens=max_tokens)
+        response = client.chat.completions.create(
+            model=model,
+            messages=[
+                {"role": "system", "content": "You are a helpful assistant."},
+                {"role": "user", "content": prompt},
+            ],
+            max_tokens=max_tokens,
+        )
         answer = response.choices[0].message.content.strip()
         print(f"GPT Response: {answer}")
         return answer
