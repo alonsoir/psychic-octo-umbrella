@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "interactive-llm-voice"
+version = "0.1.0"
+description = ""
+authors = ["Alonso Isidoro Román <alonsoir@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+openai = "^0.28.1"
+speechrecognition = "^3.10.4"
+pyttsx3 = "^2.90"
+pyaudio = "^0.2.14"
+python-dotenv = "^1.0.1"
+transformers = "^4.40.2"
+black = "^24.4.2"
+pyobjc = "^10.2"
+pyobjc-framework-avfoundation = "^10.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
