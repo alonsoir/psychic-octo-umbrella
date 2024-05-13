@@ -1,0 +1,46 @@
+<html>
+<head>
+    <title>COVID-19 Data Visualization</title>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>COVID-19 Data Visualization</h1>
+    <form id="axisForm">
+        <label for="x_axis">Select X-axis:</label>
+        <select name="x_axis" id="x_axis">
+            {% for col in columnas %}
+            <option value="{{col}}" {% if col == x_axis %} selected {% endif %}>{{col}}</option>
+            {% endfor %}
+        </select>
+        <label for="y_axis">Select Y-axis:</label>
+        <select name="y_axis" id="y_axis">
+            {% for col in columnas %}
+            <option value="{{col}}" {% if col == y_axis %} selected {% endif %}>{{col}}</option>
+            {% endfor %}
+        </select>
+    </form>
+    <div id="vis"></div>
+    <script type="text/javascript">
+        var spec = {{ chart|safe }};
+        vegaEmbed('#vis', spec);
+
+        $('#axisForm').on('change', function() {
+            var x_axis = $('#x_axis').val();
+            var y_axis = $('#y_axis').val();
+            alert(x_axis + '-' + y_axis);
+            $.ajax({
+                type: 'POST',
+                url: '/',
+                data: {x_axis: x_axis, y_axis: y_axis},
+                success: function(data) {
+                    var newSpec = data.chart;
+                    vegaEmbed('#vis', newSpec);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
