@@ -163,13 +163,13 @@ def interact_jupyter_covid():
 
 
 if __name__ == "__main__":
-    """
+
     get_pluviodata()
     get_altair_sample()
     get_plotly_figure()
     seaborn_figure()
     plot_matplotlib_sample()
     plot_seaborn_sample()
-    """
+
 
     print("Done!")

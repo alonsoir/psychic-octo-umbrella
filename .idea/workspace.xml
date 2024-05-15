@@ -5,21 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7f7e4e3f-0f00-485f-aa01-ec464b41d618" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/aemet_pluviometricas/Estaciones_Pluviometricas.dbf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/aemet_pluviometricas/Estaciones_Pluviometricas.prj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/aemet_pluviometricas/Estaciones_Pluviometricas.sbn" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/aemet_pluviometricas/Estaciones_Pluviometricas.sbx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/aemet_pluviometricas/Estaciones_Pluviometricas.shp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/aemet_pluviometricas/Estaciones_Pluviometricas.shp.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/aemet_pluviometricas/Estaciones_Pluviometricas.shx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/show_pluvio.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/cody_history.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/cody_history.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/poetry.lock" beforeDir="false" afterPath="$PROJECT_DIR$/poetry.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyproject.toml" beforeDir="false" afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/show_pluvio.py" beforeDir="false" afterPath="$PROJECT_DIR$/show_pluvio.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
