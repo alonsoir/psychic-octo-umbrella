@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "interactive-llm-voice"
 version = "0.1.0"
-description = ""
+description = "diferent scripts to interact with LLMs using voice, new articles, and other data sources"
 authors = ["Alonso Isidoro Román <alonsoir@gmail.com>"]
 readme = "README.md"
 
@@ -31,6 +31,8 @@ seaborn = "^0.13.2"
 plotly = "^5.22.0"
 ipywidgets = "^8.1.2"
 flask = "^3.0.3"
+opencv-python = "^4.9.0.80"
+moviepy = "^1.0.3"
 
 
 [build-system]

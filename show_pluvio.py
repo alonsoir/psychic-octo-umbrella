@@ -15,27 +15,29 @@ import pandas as pd
 import altair as alt
 from ipywidgets import interact, Dropdown
 
+
 def show_covid_interact(x, y):
     # Carga de datos
     spain_data = pd.read_csv(
-        "https://raw.githubusercontent.com/victorvicpal/COVID19_es/master/data/final_data/dataCOVID19_es.csv")
+        "https://raw.githubusercontent.com/victorvicpal/COVID19_es/master/data/final_data/dataCOVID19_es.csv"
+    )
 
     # Asegurarse de que 'fecha' se interprete como fecha
-    spain_data['fecha'] = pd.to_datetime(spain_data['fecha'])
+    spain_data["fecha"] = pd.to_datetime(spain_data["fecha"])
 
     # Crear un gráfico de dispersión
-    chart = alt.Chart(spain_data).mark_point(color='gray').encode(
-        x=x,
-        y=y,
-        tooltip=[alt.Tooltip(x, title='X axis'), alt.Tooltip(y, title='Y axis')]
-    ).properties(
-        title='COVID-19 Data Visualization',
-        width=800,
-        height=600
+    chart = (
+        alt.Chart(spain_data)
+        .mark_point(color="gray")
+        .encode(
+            x=x,
+            y=y,
+            tooltip=[alt.Tooltip(x, title="X axis"), alt.Tooltip(y, title="Y axis")],
+        )
+        .properties(title="COVID-19 Data Visualization", width=800, height=600)
     )
 
     return chart
-
 
 
 def plot_seaborn_sample():
@@ -48,6 +50,7 @@ def plot_seaborn_sample():
     plt.title("Número de Visitantes por Ciudad en España")
     plt.show()
 
+
 def plot_matplotlib_sample():
     data = {
         "Ciudad": ["Madrid", "Barcelona", "Valencia", "Sevilla", "Zaragoza"],
@@ -59,6 +62,7 @@ def plot_matplotlib_sample():
     ax.set_xlabel("Ciudad")
     ax.set_ylabel("Visitantes")
     plt.show()
+
 
 def get_pluviodata():
     """
@@ -102,24 +106,36 @@ def get_altair_sample():
 
 
 def get_plotly_figure():
-    df = pd.DataFrame({
-        "Ciudad": ["Madrid", "Barcelona", "Valencia", "Sevilla", "Zaragoza"],
-        "Visitantes": [500000, 600000, 200000, 300000, 150000],
-    })
-    fig = px.bar(df, x="Ciudad", y="Visitantes", color="Ciudad", title="Número de Visitantes por Ciudad en España")
+    df = pd.DataFrame(
+        {
+            "Ciudad": ["Madrid", "Barcelona", "Valencia", "Sevilla", "Zaragoza"],
+            "Visitantes": [500000, 600000, 200000, 300000, 150000],
+        }
+    )
+    fig = px.bar(
+        df,
+        x="Ciudad",
+        y="Visitantes",
+        color="Ciudad",
+        title="Número de Visitantes por Ciudad en España",
+    )
     fig.show()
 
+
 def seaborn_figure():
-    df = pd.DataFrame({
-        "Ciudad": ["Madrid", "Barcelona", "Valencia", "Sevilla", "Zaragoza"],
-        "Visitantes": [500000, 600000, 200000, 300000, 150000],
-    })
+    df = pd.DataFrame(
+        {
+            "Ciudad": ["Madrid", "Barcelona", "Valencia", "Sevilla", "Zaragoza"],
+            "Visitantes": [500000, 600000, 200000, 300000, 150000],
+        }
+    )
     sns.barplot(x="Ciudad", y="Visitantes", hue="Ciudad", data=df)
     plt.title("Número de Visitantes por Ciudad en España")
     plt.show()
 
-
     # Load the data
+
+
 def show_covid():
     # header
     # CCAA,fecha,casos,IA,UCI,muertes,nuevos,Hospitalizados,HospitalizadosNuevos,
@@ -128,35 +144,42 @@ def show_covid():
 
     # Carga de datos
     spain_data = pd.read_csv(
-        "https://raw.githubusercontent.com/victorvicpal/COVID19_es/master/data/final_data/dataCOVID19_es.csv")
+        "https://raw.githubusercontent.com/victorvicpal/COVID19_es/master/data/final_data/dataCOVID19_es.csv"
+    )
 
     # Asegurarse de que 'fecha' se interprete como fecha
-    spain_data['fecha'] = pd.to_datetime(spain_data['fecha'])
+    spain_data["fecha"] = pd.to_datetime(spain_data["fecha"])
 
     # Crear un gráfico de dispersión de casos confirmados por fecha
-    chart = alt.Chart(spain_data).mark_point(color='gray').encode(
-        x='fecha:T',  # Cambiado de 'date' a 'fecha'
-        y='casos:Q',  # Cambiado de 'confirmed' a 'casos'
-        tooltip=[alt.Tooltip('fecha:T', format='%Y-%m-%d', title='Fecha'), alt.Tooltip('casos:Q', title='Casos Confirmados')]
-    ).properties(
-        title='Confirmed Cases of COVID-19 in Spain',
-        width=800,
-        height=600
+    chart = (
+        alt.Chart(spain_data)
+        .mark_point(color="gray")
+        .encode(
+            x="fecha:T",  # Cambiado de 'date' a 'fecha'
+            y="casos:Q",  # Cambiado de 'confirmed' a 'casos'
+            tooltip=[
+                alt.Tooltip("fecha:T", format="%Y-%m-%d", title="Fecha"),
+                alt.Tooltip("casos:Q", title="Casos Confirmados"),
+            ],
+        )
+        .properties(title="Confirmed Cases of COVID-19 in Spain", width=800, height=600)
     )
-    path="datos_COVID19.html"
+    path = "datos_COVID19.html"
     print(f"file saved in {path}")
     # Guardar el gráfico como HTML
     chart.save(path)
 
+
 def interact_jupyter_covid():
     # Obtener los nombres de las columnas para las opciones del eje X e Y
     data = pd.read_csv(
-        "https://raw.githubusercontent.com/victorvicpal/COVID19_es/master/data/final_data/dataCOVID19_es.csv")
+        "https://raw.githubusercontent.com/victorvicpal/COVID19_es/master/data/final_data/dataCOVID19_es.csv"
+    )
     options = list(data.columns)
 
     # Crear widgets de dropdown para seleccionar las columnas para los ejes X e Y
-    x_dropdown = Dropdown(options=options, value='fecha', description='X-axis:')
-    y_dropdown = Dropdown(options=options, value='casos', description='Y-axis:')
+    x_dropdown = Dropdown(options=options, value="fecha", description="X-axis:")
+    y_dropdown = Dropdown(options=options, value="casos", description="Y-axis:")
 
     # Usar interact para actualizar el gráfico basado en las selecciones
     interact(show_covid_interact, x=x_dropdown, y=y_dropdown)
@@ -170,6 +193,5 @@ if __name__ == "__main__":
     seaborn_figure()
     plot_matplotlib_sample()
     plot_seaborn_sample()
-
 
     print("Done!")
